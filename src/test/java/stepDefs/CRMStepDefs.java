@@ -41,15 +41,40 @@ public class CRMStepDefs {
 //		System.out.println("AfterStep Close DB....");
 //	}
 	
-	@Before("@SmokeTest")
+	@Before(value = "@SmokeTest", order = 1)
+	public void readSmokeTestProperty() {
+		System.out.println("Read from Smoke Test property....");
+	}
+	
+	@Before(value = "@SmokeTest", order = 2)
 	public static void initChorme() {
 		System.out.println("Init Chorme....");
 	}
 	
-	@Before("@RegressionTest")
+	@Before(value = "@RegressionTest", order = 1)
+	public void readRegTestProperty() {
+		System.out.println("Read from Reg Test property....");
+	}
+
+	@Before(value = "@RegressionTest", order = 2)
 	public static void initEdge() {
 		System.out.println("Init Edge....");
 	}
+	
+//	@Before(order=2)
+//	public void initDB() {
+//		System.out.println("Init DB....");
+//	}
+	
+//	@Before(order=1)
+//	public void readProperty() {
+//		System.out.println("Read from property....");
+//	}
+	
+//	@Before(order=3)
+//	public void initBrowser() {
+//		System.out.println("Init Browser....");
+//	}
 	
 	@Given("User is logged in")
 	public void user_is_logged_in() {
